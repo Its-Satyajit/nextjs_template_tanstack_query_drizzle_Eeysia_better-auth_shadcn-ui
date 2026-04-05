@@ -1,29 +1,66 @@
-# Create T3 App
+# Next.js Template
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+A production-ready Next.js template with:
 
-## What's next? How do I make an app with this?
+- **Next.js 16** - App Router, React 19
+- **TanStack Query** - Data fetching and caching
+- **Drizzle ORM** - Type-safe SQL operations with PostgreSQL
+- **better-auth** - Authentication with social providers
+- **shadcn/ui** - Component library with Tailwind CSS 4
+- **Eden/Treaty** - Type-safe API client
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+## Quick Start
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+```bash
+# Install dependencies
+pnpm install
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Drizzle](https://orm.drizzle.team)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+# Set up environment
+cp .env.example .env
+# Edit .env with your database URL and secrets
 
-## Learn More
+# Start database (requires Docker)
+./start-database.sh
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+# Generate Drizzle schema
+pnpm db:generate
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+# Push to database
+pnpm db:push
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+# Run dev server
+pnpm dev
+```
 
-## How do I deploy this?
+## Tech Stack
 
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+| Technology | Purpose |
+|------------|---------|
+| Next.js 16 | React framework with App Router |
+| TanStack Query | Client-side data fetching |
+| Drizzle ORM | Database ORM |
+| better-auth | Authentication |
+| shadcn/ui | UI components |
+| Eden/Treaty | Type-safe API calls |
+| Elysia | API server |
+| Tailwind CSS 4 | Styling |
+
+## Environment Variables
+
+| Variable | Description |
+|----------|-------------|
+| `DATABASE_URL` | PostgreSQL connection string |
+| `BETTER_AUTH_SECRET` | Secret for session encryption |
+| `BETTER_AUTH_GITHUB_CLIENT_ID` | GitHub OAuth (optional) |
+| `BETTER_AUTH_GITHUB_CLIENT_SECRET` | GitHub OAuth (optional) |
+| `NEXT_PUBLIC_BASE_URL` | Public URL for production |
+
+## Scripts
+
+- `pnpm dev` - Start development server
+- `pnpm build` - Build for production
+- `pnpm db:generate` - Generate Drizzle schema
+- `pnpm db:push` - Push schema to database
+- `pnpm db:studio` - Open Drizzle Studio
+- `pnpm check` - Run Biome linter
+- `pnpm typecheck` - Run TypeScript check

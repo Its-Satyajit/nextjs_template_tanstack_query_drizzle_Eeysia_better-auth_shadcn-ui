@@ -10,7 +10,6 @@ function schemas<T extends PgTable>(table: T) {
 }
 export const dbSchema = {
 	user: schemas(s.user),
-	posts: schemas(s.posts),
 	session: schemas(s.session),
 	account: schemas(s.account),
 	verification: schemas(s.verification),
